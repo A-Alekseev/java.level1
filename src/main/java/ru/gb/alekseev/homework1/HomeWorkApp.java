@@ -4,6 +4,7 @@ public class HomeWorkApp {
     public static void main(String[] args) {
         printThreeWords();
         checkSumSign();
+        printColor();
     }
 
     //при вызове должен отпечатать в столбец три слова: Orange, Banana, Apple
@@ -25,4 +26,17 @@ public class HomeWorkApp {
         }
     }
 
+    //Если value меньше 0 (0 включительно), то в консоль метод должен вывести сообщение “Красный”,
+    // если лежит в пределах от 0 (0 исключительно) до 100 (100 включительно), то “Желтый”,
+    // если больше 100 (100 исключительно) - “Зеленый”;
+     static void printColor() {
+         int value = 15;
+         if (value <= 0) {
+             System.out.println("Красный");
+         } else if (value > 0 && value <= 100) {
+             System.out.println("Желтый");
+         } else {
+             System.out.println("Зеленый");
+         }
+     }
 }
