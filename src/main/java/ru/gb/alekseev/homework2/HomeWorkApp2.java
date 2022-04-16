@@ -2,11 +2,19 @@ package ru.gb.alekseev.homework2;
 
 public class HomeWorkApp2 {
     public static void main(String[] args) {
+        System.out.println("Task 1");
         System.out.println(isSumBetween10And20(2147483647, 2147483646));
         System.out.println(isSumBetween10And20(5, 5));
         System.out.println(isSumBetween10And20(-5, -5));
+
+        System.out.println("Task 2");
         printNumberSign(-5);
         printNumberSign(10);
+
+        System.out.println("Task 3");
+        System.out.println("-5 - " + isNumberNegative(-5));
+        System.out.println("5 - " + isNumberNegative(5));
+        System.out.println("0 - " + isNumberNegative(0));
 
     }
 
@@ -28,4 +36,12 @@ public class HomeWorkApp2 {
         String sign = a + (a < 0 ? " is negative" : " is positive");
         System.out.println(sign);
     }
+
+    //3. Написать метод, которому в качестве параметра передается целое число.
+    // Метод должен вернуть true, если число отрицательное, и вернуть false если положительное.
+    public static boolean isNumberNegative(int a){
+        return a < 0;
+    }
+
+
 }
