@@ -5,6 +5,7 @@ public class HomeWorkApp {
         printThreeWords();
         checkSumSign();
         printColor();
+        compareNumbers();
     }
 
     //при вызове должен отпечатать в столбец три слова: Orange, Banana, Apple
@@ -39,4 +40,16 @@ public class HomeWorkApp {
              System.out.println("Зеленый");
          }
      }
+
+     //Если a больше или равно b, то необходимо вывести в консоль сообщение “a >= b”, в противном случае “a < b”;
+    public static void compareNumbers(){
+       int a = 1500;
+       int b = 150;
+       if (a>=b){
+           System.out.println(a + " >= " + b);
+       }
+       else {
+           System.out.println(a + " < " + b);
+       }
+    }
 }
