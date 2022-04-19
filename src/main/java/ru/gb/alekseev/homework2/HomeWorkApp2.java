@@ -27,7 +27,8 @@ public class HomeWorkApp2 {
         System.out.println("1900 - " + isLeapYear(1900));
         System.out.println("2000 - " + isLeapYear(2000));
         System.out.println("2022 - " + isLeapYear(2022));
-
+        System.out.println("1955 - " + isLeapYear(1955));
+        System.out.println("1980 - " + isLeapYear(1980));
     }
 
     //если сумма лежит в пределах от 10 до 20 (включительно), вернуть true, в противном случае – false.
@@ -74,22 +75,21 @@ public class HomeWorkApp2 {
             return false;
         }
 
-        boolean isLeap;
-        if (year % 4 == 0) {
-            //Каждый 4-й год является високосным, кроме каждого 100-го,
-            if (year % 100 == 0) {
-                //при этом каждый 400-й – високосный.
-                if (year % 400 == 0) {
-                    isLeap = true;
-                } else {
-                    isLeap = false;
-                }
-            } else {
-                isLeap = true;
-            }
-        } else {
-            isLeap = false;
+        //Каждый 4-й год является високосным кроме каждого 100-го,
+        if (year % 4 != 0 ) {
+            return false;
         }
-        return isLeap;
+
+        //при этом каждый 400-й – високосный.
+        if (year % 400 == 0){
+            return true;
+        }
+
+        //кроме каждого 100-го,
+        if (year % 100 == 0){
+            return false;
+        }
+
+        return true;
     }
 }
