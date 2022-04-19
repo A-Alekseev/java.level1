@@ -32,11 +32,16 @@ public class HomeworkApp3 {
         // Определить элементы одной из диагоналей можно по следующему принципу:
         // индексы таких элементов равны, то есть [0][0], [1][1], [2][2], …, [n][n];
         System.out.println("\n" + "Task 4");
-        int[][] dArr = GenerateDiagonalsArray(7);
+        int[][] dArr = generateDiagonalsArray(7);
         for (int i = 0; i < dArr.length; i++) {
             printArray(dArr[i]);
         }
 
+        //Написать метод, принимающий на вход два аргумента: len и initialValue,
+        // и возвращающий одномерный массив типа int длиной len,
+        // каждая ячейка которого равна initialValue;
+        System.out.println("\n" + "Task 5");
+        printArray(generateAndFillArray(10, 152));
     }
 
     public static void printArray(int[] arr){
@@ -91,7 +96,7 @@ public class HomeworkApp3 {
     // (можно только одну из диагоналей, если обе сложно).
     // Определить элементы одной из диагоналей можно по следующему принципу:
     // индексы таких элементов равны, то есть [0][0], [1][1], [2][2], …, [n][n];
-    private static int[][] GenerateDiagonalsArray(int size) {
+    public static int[][] generateDiagonalsArray(int size) {
         int[][] aa = new int[size][size];
         for (int i = 0; i< size; i++){
             aa[i][i] = 1;
@@ -100,4 +105,12 @@ public class HomeworkApp3 {
         return aa;
     }
 
+    //Написать метод, принимающий на вход два аргумента: len и initialValue,
+    // и возвращающий одномерный массив типа int длиной len,
+    // каждая ячейка которого равна initialValue;
+    public static int[] generateAndFillArray(int len, int initialValue){
+        int[] arr = new int[len];
+        Arrays.fill(arr, initialValue);
+        return arr;
+    }
 }
