@@ -45,10 +45,32 @@ public class HomeworkApp3 {
 
         //6. * Задать одномерный массив и найти в нем минимальный и максимальный элементы ;
         System.out.println("\n" + "Task 6");
-        int[] arr = generateRandomArray(10, 100);
-        printArray(arr);
-        System.out.println("min = " + getMinArrayItem(arr));
-        System.out.println("max = " + getMaxArrayItem(arr));
+        int[] arr6 = generateRandomArray(10, 100);
+        printArray(arr6);
+        System.out.println("min = " + getMinArrayItem(arr6));
+        System.out.println("max = " + getMaxArrayItem(arr6));
+
+        //7
+        System.out.println("\n" + "Task 7");
+        int[] arr71 = new int[] {2, 2, 2, 1, 2, 2, 10, 1};
+        printArray(arr71);
+        System.out.println(checkBalance(arr71));
+
+        int[] arr72 = new int[] {1, 1, 1, 2, 1};
+        printArray(arr72);
+        System.out.println(checkBalance(arr72));
+
+        int[] arr73 = new int[] {1, 1, 1, 1, 100};
+        printArray(arr73);
+        System.out.println(checkBalance(arr73));
+
+        //8
+        System.out.println("\n" + "Task 8");
+        int[] arr8 = generateRandomArray(5, 100);
+        printArray(arr8);
+        shiftArray(arr8, -2);
+        printArray(arr8);
+        shiftArray(arr8, 3);
     }
 
     //printing array with spaces
@@ -129,7 +151,7 @@ public class HomeworkApp3 {
     }
 
     //finds minimal item in array
-    private static int getMinArrayItem(int[] arr) {
+    public static int getMinArrayItem(int[] arr) {
         int min = arr[0];
         for (int i = 1; i < arr.length; i++)
         {
@@ -141,7 +163,7 @@ public class HomeworkApp3 {
     }
 
     //finds maximal item in array
-    private static int getMaxArrayItem(int[] arr) {
+    public static int getMaxArrayItem(int[] arr) {
         int max = arr[0];
         for (int i = 1; i < arr.length; i++)
         {
@@ -150,5 +172,65 @@ public class HomeworkApp3 {
             }
         }
         return max;
+    }
+
+    //7. ** Написать метод, в который передается не пустой одномерный целочисленный массив,
+    // метод должен вернуть true, если в массиве есть место,
+    // в котором сумма левой и правой части массива равны.
+    public static boolean checkBalance(int[] arr){
+        if (arr.length <= 1)
+            return false;
+
+        for (int i = 0; i < arr.length - 1; i++){
+            long leftSum = calculateSubArraySum(arr, 0, i);
+            long rightSum = calculateSubArraySum(arr, i + 1, arr.length - 1);
+            if (leftSum == rightSum){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static long calculateSubArraySum(int[] arr, int leftIndex, int rightIndex){
+        long sum = 0;
+        for (int i = leftIndex; i <= rightIndex; i++){
+            sum+=(long)arr[i];
+        }
+        return sum;
+    }
+
+
+    //8. *** Написать метод, которому на вход подается одномерный массив и число n (может быть положительным, или отрицательным),
+    // при этом метод должен сместить все элементы массива на n позиций. Элементы смещаются циклично.
+    // Для усложнения задачи нельзя пользоваться вспомогательными массивами.
+    // Примеры:
+    // [ 1, 2, 3 ] при n = 1 (на один вправо) -> [ 3, 1, 2 ];
+    // [ 3, 5, 6, 1] при n = -2 (на два влево) -> [ 6, 1, 3, 5 ].
+    // При каком n в какую сторону сдвиг можете выбирать сами.
+    public static void shiftArray(int[] arr, int steps){
+        for (int i = 1; i <= Math.abs(steps); i++){
+            if(steps > 0){
+                shiftArrayRightOnce(arr);
+            }
+            else if (steps < 0){
+                shiftArrayLeftOnce(arr);
+            }
+        }
+    }
+
+    public static void shiftArrayLeftOnce(int[] arr){
+        int temp = arr[0];
+        for (int i = 0; i< arr.length - 1; i++){
+            arr[i] = arr[i+1];
+        }
+        arr[arr.length - 1] = temp;
+    }
+
+    public static void shiftArrayRightOnce(int[] arr){
+        int temp = arr[arr.length - 1];
+        for (int i = arr.length - 1; i > 0 ; i--){
+            arr[i] = arr[i-1];
+        }
+        arr[0] = temp;
     }
 }
