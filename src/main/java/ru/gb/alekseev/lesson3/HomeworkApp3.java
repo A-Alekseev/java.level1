@@ -37,7 +37,7 @@ public class HomeworkApp3 {
             printArray(dArr[i]);
         }
 
-        //Написать метод, принимающий на вход два аргумента: len и initialValue,
+        //5. Написать метод, принимающий на вход два аргумента: len и initialValue,
         // и возвращающий одномерный массив типа int длиной len,
         // каждая ячейка которого равна initialValue;
         System.out.println("\n" + "Task 5");
@@ -54,23 +54,27 @@ public class HomeworkApp3 {
         System.out.println("\n" + "Task 7");
         int[] arr71 = new int[] {2, 2, 2, 1, 2, 2, 10, 1};
         printArray(arr71);
-        System.out.println(checkBalance(arr71));
+        System.out.println(checkBalance(arr71)); //true
 
         int[] arr72 = new int[] {1, 1, 1, 2, 1};
         printArray(arr72);
-        System.out.println(checkBalance(arr72));
+        System.out.println(checkBalance(arr72)); //true
 
         int[] arr73 = new int[] {1, 1, 1, 1, 100};
         printArray(arr73);
-        System.out.println(checkBalance(arr73));
+        System.out.println(checkBalance(arr73)); //false
 
         //8
         System.out.println("\n" + "Task 8");
         int[] arr8 = generateRandomArray(5, 100);
+        System.out.println("source array");
         printArray(arr8);
+        System.out.println("shifted to -2");
         shiftArray(arr8, -2);
         printArray(arr8);
+        System.out.println("shifted to 3");
         shiftArray(arr8, 3);
+        printArray(arr8);
     }
 
     //printing array with spaces
@@ -141,7 +145,7 @@ public class HomeworkApp3 {
         return aa;
     }
 
-    //Написать метод, принимающий на вход два аргумента: len и initialValue,
+    //5. Написать метод, принимающий на вход два аргумента: len и initialValue,
     // и возвращающий одномерный массив типа int длиной len,
     // каждая ячейка которого равна initialValue;
     public static int[] generateAndFillArray(int len, int initialValue){
@@ -150,6 +154,7 @@ public class HomeworkApp3 {
         return arr;
     }
 
+    //6. * Задать одномерный массив и найти в нем минимальный и максимальный элементы ;
     //finds minimal item in array
     public static int getMinArrayItem(int[] arr) {
         int min = arr[0];
@@ -162,6 +167,7 @@ public class HomeworkApp3 {
         return min;
     }
 
+    //6. * Задать одномерный массив и найти в нем минимальный и максимальный элементы ;
     //finds maximal item in array
     public static int getMaxArrayItem(int[] arr) {
         int max = arr[0];
@@ -191,6 +197,7 @@ public class HomeworkApp3 {
         return false;
     }
 
+    //calculates sum if array items from ... to
     public static long calculateSubArraySum(int[] arr, int leftIndex, int rightIndex){
         long sum = 0;
         for (int i = leftIndex; i <= rightIndex; i++){
@@ -198,7 +205,6 @@ public class HomeworkApp3 {
         }
         return sum;
     }
-
 
     //8. *** Написать метод, которому на вход подается одномерный массив и число n (может быть положительным, или отрицательным),
     // при этом метод должен сместить все элементы массива на n позиций. Элементы смещаются циклично.
@@ -218,6 +224,7 @@ public class HomeworkApp3 {
         }
     }
 
+    //shifts all array items one position left
     public static void shiftArrayLeftOnce(int[] arr){
         int temp = arr[0];
         for (int i = 0; i< arr.length - 1; i++){
@@ -226,6 +233,7 @@ public class HomeworkApp3 {
         arr[arr.length - 1] = temp;
     }
 
+    //shifts all array items one position right
     public static void shiftArrayRightOnce(int[] arr){
         int temp = arr[arr.length - 1];
         for (int i = arr.length - 1; i > 0 ; i--){
