@@ -42,8 +42,16 @@ public class HomeworkApp3 {
         // каждая ячейка которого равна initialValue;
         System.out.println("\n" + "Task 5");
         printArray(generateAndFillArray(10, 152));
+
+        //6. * Задать одномерный массив и найти в нем минимальный и максимальный элементы ;
+        System.out.println("\n" + "Task 6");
+        int[] arr = generateRandomArray(10, 100);
+        printArray(arr);
+        System.out.println("min = " + getMinArrayItem(arr));
+        System.out.println("max = " + getMaxArrayItem(arr));
     }
 
+    //printing array with spaces
     public static void printArray(int[] arr){
         for(int i = 0; i < arr.length; i++){
             System.out.printf("%4d", arr[i]);
@@ -51,6 +59,7 @@ public class HomeworkApp3 {
         System.out.println();
     }
 
+    //generates random array
     public static int[] generateRandomArray(int length, int highBound){
         int[] arr = new int[length];
         for(int i = 0; i < arr.length; i++){
@@ -59,6 +68,9 @@ public class HomeworkApp3 {
         return arr;
     }
 
+    //1. Задать целочисленный массив, состоящий из элементов 0 и 1.
+    // Например: [ 1, 1, 0, 0, 1, 0, 1, 1, 0, 0 ].
+    // С помощью цикла и условия заменить 0 на 1, 1 на 0;
     public static void invertArrayItems(int[] arr){
         for(int i = 0; i < arr.length; i++){
             if (arr[i] == 0){
@@ -70,6 +82,8 @@ public class HomeworkApp3 {
         }
     }
 
+    //2. Задать пустой целочисленный массив длиной 100.
+    // С помощью цикла заполнить его значениями 1 2 3 4 5 6 7 8 … 100;
     public static int[] generateSequencedArray(int length){
         int[] arr = new int[length];
         for(int i = 0; i < arr.length; i++){
@@ -112,5 +126,29 @@ public class HomeworkApp3 {
         int[] arr = new int[len];
         Arrays.fill(arr, initialValue);
         return arr;
+    }
+
+    //finds minimal item in array
+    private static int getMinArrayItem(int[] arr) {
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++)
+        {
+            if (arr[i] < min){
+                min = arr[i];
+            }
+        }
+        return min;
+    }
+
+    //finds maximal item in array
+    private static int getMaxArrayItem(int[] arr) {
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++)
+        {
+            if (arr[i] > max){
+                max = arr[i];
+            }
+        }
+        return max;
     }
 }
