@@ -17,14 +17,33 @@ public class HomeworkApp3 {
 
         //2. Задать пустой целочисленный массив длиной 100.
         // С помощью цикла заполнить его значениями 1 2 3 4 5 6 7 8 … 100;
-        System.out.println("Task 2");
+        System.out.println("\n" + "Task 2");
         int[] arr2 = generateSequencedArray(100);
         System.out.println(Arrays.toString(arr2));
 
         //3. Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ]
         // пройти по нему циклом, и числа меньшие 6 умножить на 2;
-        System.out.println("Task 3");
+        System.out.println("\n" + "Task 3");
         runTask3();
+
+        //4. Создать квадратный двумерный целочисленный массив (количество строк и столбцов одинаковое),
+        // и с помощью цикла(-ов) заполнить его диагональные элементы единицами
+        // (можно только одну из диагоналей, если обе сложно).
+        // Определить элементы одной из диагоналей можно по следующему принципу:
+        // индексы таких элементов равны, то есть [0][0], [1][1], [2][2], …, [n][n];
+        System.out.println("\n" + "Task 4");
+        int[][] dArr = GenerateDiagonalsArray(7);
+        for (int i = 0; i < dArr.length; i++) {
+            printArray(dArr[i]);
+        }
+
+    }
+
+    public static void printArray(int[] arr){
+        for(int i = 0; i < arr.length; i++){
+            System.out.printf("%4d", arr[i]);
+        }
+        System.out.println();
     }
 
     public static int[] generateRandomArray(int length, int highBound){
@@ -58,12 +77,27 @@ public class HomeworkApp3 {
     // пройти по нему циклом, и числа меньшие 6 умножить на 2;
     public static void runTask3()    {
         int[] arr = new int[]{1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 };
-        System.out.println(Arrays.toString(arr));
+        printArray(arr);
         for(int i = 0; i < arr.length; i++) {
             if (arr[i] < 6){
                 arr[i] *= 2;
             }
         }
-        System.out.println(Arrays.toString(arr));
+        printArray(arr);
     }
+
+    //4. Создать квадратный двумерный целочисленный массив (количество строк и столбцов одинаковое),
+    // и с помощью цикла(-ов) заполнить его диагональные элементы единицами
+    // (можно только одну из диагоналей, если обе сложно).
+    // Определить элементы одной из диагоналей можно по следующему принципу:
+    // индексы таких элементов равны, то есть [0][0], [1][1], [2][2], …, [n][n];
+    private static int[][] GenerateDiagonalsArray(int size) {
+        int[][] aa = new int[size][size];
+        for (int i = 0; i< size; i++){
+            aa[i][i] = 1;
+            aa[i][size - i - 1] = 1;
+        }
+        return aa;
+    }
+
 }
