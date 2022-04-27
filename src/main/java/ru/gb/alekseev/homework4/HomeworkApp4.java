@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class HomeworkApp4 {
 
     public static char[][] map;
-    public static final int SIZE = 3;
-    public static final int DOTS_TO_WIN = 3;
+    public static final int SIZE = 5;
+    public static final int DOTS_TO_WIN = 2;
 
     public static final char DOT_EMPTY = '*';
     public static final char DOT_X = 'X';
@@ -82,14 +82,72 @@ public class HomeworkApp4 {
     }
 
     public static boolean checkWin(char symb) {
-        if(map[0][0] == symb && map[0][1] == symb && map[0][2] == symb) return true;
-        if(map[1][0] == symb && map[1][1] == symb && map[1][2] == symb) return true;
-        if(map[2][0] == symb && map[2][1] == symb && map[2][2] == symb) return true;
-        if(map[0][0] == symb && map[1][0] == symb && map[2][0] == symb) return true;
-        if(map[0][1] == symb && map[1][1] == symb && map[2][1] == symb) return true;
-        if(map[0][2] == symb && map[1][2] == symb && map[2][2] == symb) return true;
-        if(map[0][0] == symb && map[1][1] == symb && map[2][2] == symb) return true;
-        if(map[2][0] == symb && map[1][1] == symb && map[0][2] == symb) return true;
+        for (int y = 0; y < SIZE; y++) {
+            for (int x = 0; x < SIZE; x++) {
+                if (map[y][x] != symb) {
+                    continue;
+                }
+                if (checkAllDirections(symb, y, x)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean checkAllDirections(char symb, int startY, int startX) {
+        //calculating right
+        int count = 0;
+        for (int x = startX; x < SIZE; x++) {
+            if(map[startY][x] == symb){
+                count++;
+            }
+            else{
+                break;
+            }
+            if(count >= DOTS_TO_WIN)
+                return true;
+        }
+
+        //calculating down
+        count = 0;
+        for (int y = startY; y < SIZE; y++) {
+            if (map[y][startX] == symb){
+                count++;
+            }
+            else{
+                break;
+            }
+            if(count >= DOTS_TO_WIN)
+                return true;
+        }
+
+        //calculating right-down
+        count = 0;
+        for (int y = startY, x = startX; x < SIZE && y < SIZE; x++, y++) {
+            if (map[y][x] == symb){
+                count++;
+            }
+            else{
+                break;
+            }
+            if(count >= DOTS_TO_WIN)
+                return true;
+        }
+
+        //calculating left-down
+        count = 0;
+        for (int y = startY, x = startX; x >= 0 && y < SIZE; x--, y++) {
+            if (map[y][x] == symb){
+                count++;
+            }
+            else{
+                break;
+            }
+            if(count >= DOTS_TO_WIN)
+                return true;
+        }
+
         return false;
     }
 
