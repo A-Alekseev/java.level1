@@ -7,6 +7,7 @@ public class Main {
         uniqueWords();
 
         System.out.println();
+        System.out.println("Phonebook");
         testPhonebook();
     }
 
