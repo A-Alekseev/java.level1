@@ -15,7 +15,8 @@ public class TestRunner {
 
     }
 
-    public static void start(String testerClassName) throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public static void start(String testerClassName) throws ClassNotFoundException, InvocationTargetException,
+            NoSuchMethodException, InstantiationException, IllegalAccessException {
         start(Class.forName(testerClassName));
     }
 
@@ -36,8 +37,9 @@ public class TestRunner {
             .filter(method -> method.getAnnotation(Test.class) != null)
             .toList());
 
-        Collections.sort(testMethods, (m1, m2) -> Integer.compare(m1.getAnnotation(Test.class).value(), m2.getAnnotation(Test.class).value()));
-
+        Collections.sort(testMethods, (m1, m2) -> Integer.compare(
+                m1.getAnnotation(Test.class).value(),
+                m2.getAnnotation(Test.class).value()));
 
         for (Method method : testMethods) {
             System.out.print("Executing test " + method.getName() + " ... ");
@@ -69,5 +71,4 @@ public class TestRunner {
 
         return methods.get(0);
     }
-
 }
